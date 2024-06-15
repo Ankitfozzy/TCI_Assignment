@@ -10,8 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BonusEligibleResponseDTO {
-	
-    private String currency;
-    private List<BonusEligibleEmployeeDTO> employees;
-    
+
+	private String currency;
+	private List<BonusEligibleEmployeeDTO> employees;
+
 }

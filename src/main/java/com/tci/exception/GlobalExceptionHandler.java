@@ -10,9 +10,10 @@ import com.tci.dto.ErrorResponseDTO;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponseDTO> handleException(Exception ex) {
-        ErrorResponseDTO errorResponse = new ErrorResponseDTO(ex.getMessage(), null);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
-    }
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponseDTO> handleException(Exception ex) {
+		ErrorResponseDTO errorResponse = new ErrorResponseDTO(ex.getMessage(), null);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+	}
+	
 }

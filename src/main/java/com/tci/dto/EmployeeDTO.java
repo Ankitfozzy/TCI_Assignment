@@ -12,16 +12,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeDTO {
-	
-    private String empName;
-    private String department;
-    private Double amount;
-    private String currency;
-    
-    @JsonFormat(pattern = "MMM-dd-yyyy")
-    private LocalDate joiningDate;
 
-    @JsonFormat(pattern = "MMM-dd-yyyy")
-    private LocalDate exitDate;
-    
+	private String empName;
+	private String department;
+	private Double amount;
+	private String currency;
+
+	@JsonFormat(pattern = "MMM-dd-yyyy")
+	private LocalDate joiningDate;
+
+	@JsonFormat(pattern = "MMM-dd-yyyy")
+	private LocalDate exitDate;
+
 }

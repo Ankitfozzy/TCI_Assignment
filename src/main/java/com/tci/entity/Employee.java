@@ -17,18 +17,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String empName;
-    private Double amount;
-    private String currency;
-    private LocalDate joiningDate;
-    private LocalDate exitDate;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String empName;
+	private Double amount;
+	private String currency;
+	private LocalDate joiningDate;
+	private LocalDate exitDate;
+
+	@ManyToOne
+	@JoinColumn(name = "department_id")
+	private Department department;
+
 }

@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BonusEligibleEmployeeDTO {
-	
-    private String empName;
-    private Double amount;
-    
+
+	private String empName;
+	private Double amount;
+
 }

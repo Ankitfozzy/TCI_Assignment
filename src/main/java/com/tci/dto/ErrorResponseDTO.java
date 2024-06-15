@@ -10,8 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ErrorResponseDTO {
-	
-    private String errorMessage;
-    private List<BonusEligibleResponseDTO> data;
-    
+
+	private String errorMessage;
+	private List<BonusEligibleResponseDTO> data;
+
 }

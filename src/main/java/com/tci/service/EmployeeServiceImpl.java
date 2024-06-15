@@ -18,35 +18,35 @@ import java.util.stream.Collectors;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private DepartmentRepository departmentRepository;
+	@Autowired
+	private DepartmentRepository departmentRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-    @Override
-    public void saveEmployees(List<EmployeeDTO> employeeDTOs) {
-        List<Employee> employees = employeeDTOs.stream().map(dto -> {
-            Optional<Department> departmentOpt = departmentRepository.findByName(dto.getDepartment());
-            Department department = departmentOpt.orElseGet(() -> departmentRepository.save(new Department(null, dto.getDepartment())));
+	@Override
+	public void saveEmployees(List<EmployeeDTO> employeeDTOs) {
+		List<Employee> employees = employeeDTOs.stream().map(dto -> {
+			Optional<Department> departmentOpt = departmentRepository.findByName(dto.getDepartment());
+			Department department = departmentOpt
+					.orElseGet(() -> departmentRepository.save(new Department(null, dto.getDepartment())));
 
-            Employee employee = modelMapper.map(dto, Employee.class);
-            employee.setDepartment(department);
-            return employee;
-        }).collect(Collectors.toList());
+			Employee employee = modelMapper.map(dto, Employee.class);
+			employee.setDepartment(department);
+			return employee;
+		}).collect(Collectors.toList());
 
-        employeeRepository.saveAll(employees);
-    }
+		employeeRepository.saveAll(employees);
+	}
 
-    @Override
-    public List<Employee> getEligibleEmployees(LocalDate date) {
-        return employeeRepository.findAll().stream()
-                .filter(employee -> !employee.getJoiningDate().isAfter(date) && !employee.getExitDate().isBefore(date))
-                .sorted((e1, e2) -> e1.getEmpName().compareToIgnoreCase(e2.getEmpName()))
-                .collect(Collectors.toList());
-    }
+	@Override
+	public List<Employee> getEligibleEmployees(LocalDate date) {
+		return employeeRepository.findAll().stream()
+				.filter(employee -> !employee.getJoiningDate().isAfter(date) && !employee.getExitDate().isBefore(date))
+				.sorted((e1, e2) -> e1.getEmpName().compareToIgnoreCase(e2.getEmpName())).collect(Collectors.toList());
+	}
+	
 }
-
